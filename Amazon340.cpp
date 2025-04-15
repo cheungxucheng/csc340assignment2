@@ -22,7 +22,7 @@ Vendor Amazon340::getVendor() const {
 }
 
 ostream& operator<<(ostream& outs, const Amazon340& amazon) {
-	outs << "Welcome to Amazon340!";
+	outs << "Welcome to Amazon340!\n";
 	return outs;
 }
 

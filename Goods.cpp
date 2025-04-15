@@ -27,3 +27,25 @@ bool Goods::sell(int quantity) {
 		return false;
 	}
 }
+
+ostream& operator<<(ostream& out, const Goods& goods) {
+	out << "Name: " << goods.getName() << "\nDescription: " << goods.getDescription() << "\nRating: " << goods.getRating() << "\nSold Count: " << goods.getSoldCount() << "\nQuantity:" << goods.quantity << "\nExpiration Date: " << goods.expirationDate;
+	return out;
+}
+
+istream& operator>>(istream& in, Goods& goods) {
+	string name;
+	string description;
+
+	cout << "Enter product name: ";
+	cin >> name;
+	goods.setName(name);
+	cout << "Enter product description: ";
+	cin >> description;
+	goods.setDescription(description);
+	cout << "Enter product expiration date:";
+	cin >> goods.expirationDate;
+	cout << "Enter product quantity: ";
+	cin >> goods.quantity;
+	return in;
+}

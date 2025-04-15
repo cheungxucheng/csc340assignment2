@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include "Product.h"
+#include "Media.h"
+#include "Goods.h"
 
 using namespace std;
 // TO DO: function implementations
@@ -25,7 +27,7 @@ Product::~Product() {
 }
 
 void Product::display() {
-	cout << name << "\n" << description << "\n" << rating << "\n" << soldCount << "\n";
+	cout << this;
 }
 
 bool Product::modify() {
@@ -50,4 +52,22 @@ bool Product::sell(int quantity) {
 // Operator overloading implementation
 bool Product::operator==(const Product& otherProduct) const {
 	return Product::name == otherProduct.name;
+}
+
+ostream& operator<<(ostream& out, const Product& product) {
+	out << "Name: " << product.name << "\nDescription: " << product.description << "\nRating: " << product.rating << "\nSold Count: " << product.soldCount << "\n";
+	return out;
+}
+
+istream& operator>>(istream& in, Product& product) {
+	cout << "Enter product name: ";
+	in >> product.name;
+	cout << "Enter product description: ";
+	in >> product.description;
+	cout << "Enter product rating: ";
+	in >> product.rating;
+	cout << "Enter solc count: ";
+	in >> product.soldCount;
+
+	return in;
 }

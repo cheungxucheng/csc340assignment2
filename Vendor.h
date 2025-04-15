@@ -51,6 +51,8 @@ class Vendor {
 		// You don't need to modify it but will have to put it inside your class. 
 		// Operator == overloading function prototype:
 		bool operator==(const Vendor& otherVendor) const; 
+		friend ostream& operator<<(ostream& out, const Vendor& vendor);
+		friend istream& operator>>(istream& in, Vendor& vendor);
 };
 
 #endif

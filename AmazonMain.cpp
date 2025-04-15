@@ -36,14 +36,11 @@ void displayVendorMenu(Vendor& vendor){
 
 		switch (vendorChoice) {
 			case 1: {
-				vendor.displayProfile();
+				cout << vendor;
 				break;
 			}
 			case 2: {
-				string password;
-				cout << "\nEnter new password: ";
-				cin >> password;
-				vendor.modifyPassword(password);
+				cin >> vendor;
 				break;
 			}
 			case 3: {
@@ -53,38 +50,14 @@ void displayVendorMenu(Vendor& vendor){
 				cout << "\nEnter product type in lowercase: ";
 				cin >> in;
 				if (in == "media") {
-					string name;
-					string description;
-					string type;
-					string targetAudience;
-
-					cout << "Enter product name: ";
-					cin >> name;
-					cout << "Enter product description: ";
-					cin >> description;
-					cout << "Enter product media type: ";
-					cin >> type;
-					cout << "Enter product target audience: ";
-					cin >> targetAudience;
-
-					shared_ptr<Product> product = make_shared<Media>(name, description, 0, 0, type, targetAudience);
+					Media media;
+					cin >> media;
+					shared_ptr<Product> product = make_shared<Media>(media);
 					vendor.createProduct(product);
 				} else if (in == "goods") {
-					string name;
-					string description;
-					string expDate;
-					int quantity;
-
-					cout << "Enter product name: ";
-					cin >> name;
-					cout << "Enter product description: ";
-					cin >> description;
-					cout << "Enter product expiration date:";
-					cin >> expDate;
-					cout << "Enter product quantity: ";
-					cin >> quantity;
-
-					shared_ptr<Product> product = make_shared<Goods>(name, description, 0, 0, expDate, quantity);
+					Goods goods;
+					cin >> goods;
+					shared_ptr<Product> product = make_shared<Goods>(goods);
 					vendor.createProduct(product);
 				} else {
 					cout << "Accepted product types are 'media' and 'goods'." << "\n";
@@ -163,7 +136,8 @@ int main(){
 	cout << amazon340;
 	cin >> amazon340;
 	Vendor currVendor = amazon340.getVendor();
-	currVendor.displayProfile();
+	displayVendorMenu(currVendor);
+	
 	// cout << "\n Welcome to Amazon340:" << endl;
 	// // TO DO: Ask the vendor to enter their information 
 	// //        Instantiate a new Vendor object

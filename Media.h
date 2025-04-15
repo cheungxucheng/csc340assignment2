@@ -16,6 +16,8 @@ class Media: public Product {
 		Media(const string& name, const string& description, const int& rating, const int& soldCount, const string& type, const string& targetAudience);
 		~Media();
 		virtual bool sell(int quantity);
+		friend ostream& operator<<(ostream& out, const Media& media);
+		friend istream& operator>>(istream& in, Media& media);
 };
 
 #endif

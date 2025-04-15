@@ -40,6 +40,8 @@ class Product {
 		// You don't need to modify it but will have to put it inside your class. 
 		// Operator overloading function prototype:
 		bool operator==(const Product& otherProduct) const; 
+		friend ostream& operator<<(ostream& out, const Product& product);
+		friend istream& operator>>(istream& in, Product& product);
 };
 
 

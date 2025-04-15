@@ -24,7 +24,7 @@ Vendor::~Vendor() {
 	//cout << "Deleting Vendor obj " << username << "\n";
 }
 
-void Vendor::displayProfile() {
+void Vendor::displayProfile() { // should this be kept with the output operator overloading?
 	cout << username << "\n" << email << "\n" << bio << "\n" << profilePicture << "\n";
 }
 
@@ -45,7 +45,7 @@ void Vendor::displayProduct(int index) {
 		return;
 	}
 
-	products.reverseFindKthItem(index)->getItem()->display();
+	cout << *products.reverseFindKthItem(index)->getItem();
 }
 
 void Vendor::displayAllProducts() {
@@ -61,7 +61,7 @@ bool Vendor::modifyProduct(int index) {
 		return false;
 	}
 
-	products.reverseFindKthItem(index)->getItem()->modify();
+	cin >> *products.reverseFindKthItem(index)->getItem();
 	return true;
 }
 
@@ -88,4 +88,15 @@ bool Vendor::deleteProduct(int index) {
 // Operator == overloading implementation
 bool Vendor::operator==(const Vendor& otherVendor) const {
 	return (Vendor::username == otherVendor.username) && (Vendor::email == otherVendor.email);
+}
+
+ostream& operator<<(ostream& out, const Vendor& vendor) {
+	out << "Username: " << vendor.username << "\nEmail: " << vendor.email << "\nBio: " << vendor.bio << "\nProfile Pic: " << vendor.profilePicture << "\n";
+	return out;
+}
+
+istream& operator>>(istream& in, Vendor& vendor) {
+	cout << "\nEnter new password: ";
+	in >> vendor.password;
+	return in;
 }
