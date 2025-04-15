@@ -20,3 +20,28 @@ Vendor Amazon340::getVendor() const {
 	// TO DO: implement function
 	return vendor;
 }
+
+ostream& operator<<(ostream& outs, const Amazon340& amazon) {
+	outs << "Welcome to Amazon340!";
+	return outs;
+}
+
+istream& operator>>(istream& in, Amazon340& amazon) {
+	string username;
+	string email;
+	string password;
+	string bio;
+	string profilePicture;
+	cout << "To create a new profile, enter your username: ";
+	in >> username;
+	cout << "Enter your email: ";
+	in >> email;
+	cout << "Enter your password: ";
+	in >> password;
+	cout << "Enter your bio: ";
+	in >> bio;
+	cout << "Enter a link to your profile picture: ";
+	in >> profilePicture;
+	amazon.createVendor(username, email, password, bio, profilePicture);
+	return in;
+}

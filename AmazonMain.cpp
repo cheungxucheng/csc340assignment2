@@ -160,35 +160,38 @@ int main(){
 	// Instantiating the program using the default constructor
 	// With this implementation, the application will only have one vendor
 	Amazon340 amazon340; 
+	cout << amazon340;
+	cin >> amazon340;
+	Vendor currVendor = amazon340.getVendor();
+	currVendor.displayProfile();
+	// cout << "\n Welcome to Amazon340:" << endl;
+	// // TO DO: Ask the vendor to enter their information 
+	// //        Instantiate a new Vendor object
+	// string username;
+	// string email;
+	// string password;
+	// string bio;
+	// string profilePicture;
+	// cout << "To create a new profile, enter your username: ";
+	// cin >> username;
+	// cout << "Enter your email: ";
+	// cin >> email;
+	// cout << "Enter your password: ";
+	// cin >> password;
+	// cout << "Enter your bio: ";
+	// cin >> bio;
+	// cout << "Enter a link to your profile picture: ";
+	// cin >> profilePicture;
 
-	cout << "\n Welcome to Amazon340:" << endl;
-	// TO DO: Ask the vendor to enter their information 
-	//        Instantiate a new Vendor object
-	string username;
-	string email;
-	string password;
-	string bio;
-	string profilePicture;
-	cout << "To create a new profile, enter your username: ";
-	cin >> username;
-	cout << "Enter your email: ";
-	cin >> email;
-	cout << "Enter your password: ";
-	cin >> password;
-	cout << "Enter your bio: ";
-	cin >> bio;
-	cout << "Enter a link to your profile picture: ";
-	cin >> profilePicture;
+	// // call amazon340 createVendor function 
+	// // replace /*...*/ with the right parameters
+	// amazon340.createVendor(username, email, password, bio, profilePicture);
 
-	// call amazon340 createVendor function 
-	// replace /*...*/ with the right parameters
-	amazon340.createVendor(username, email, password, bio, profilePicture);
+	// // Retrieve the vendor 
+	// Vendor currentVendor = amazon340.getVendor();
 
-	// Retrieve the vendor 
-	Vendor currentVendor = amazon340.getVendor();
-
-	// Display the main menu
-	displayVendorMenu(currentVendor);
+	// // Display the main menu
+	// displayVendorMenu(currentVendor);
 
 	return 0;
 }
