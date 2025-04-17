@@ -48,11 +48,14 @@ istream& operator>>(istream& in, Media& media) {
 	in >> name;
 	media.setName(name);
 	cout << "Enter product description: ";
-	in >> description;
+	in.ignore();
+	getline(in, description);
 	media.setDescription(description);
 	cout << "Enter product media type: ";
-	in >> media.type;
+	in.ignore();
+	getline(in, media.type);
 	cout << "Enter product target audience: ";
-	in >> media.targetAudience;
+	in.ignore();
+	getline(in, media.targetAudience);
 	return in;
 }

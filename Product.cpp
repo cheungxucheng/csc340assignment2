@@ -42,7 +42,8 @@ bool Product::modify() {
 	cin >> newName;
 	name = newName;
 	cout << "Enter a new description for this product: ";
-	cin >> newDescription;
+	cin.ignore();
+	getline(cin, newDescription);
 	description = newDescription;
 	
 	return true;
@@ -78,7 +79,8 @@ istream& operator>>(istream& in, Product& product) {
 	cout << "Enter product name: ";
 	in >> product.name;
 	cout << "Enter product description: ";
-	in >> product.description;
+	in.ignore();
+	getline(in, product.description);
 	cout << "Enter product rating: ";
 	in >> product.rating;
 	cout << "Enter sold count: ";

@@ -83,7 +83,7 @@ bool Vendor::deleteProduct(int index) {
 		cout << "Error: product index out of range, there are only " << products.getCurrentSize() << " products available" << "\n";
 		return false;
 	}
-
+	cout << "Removing Product: " << products.reverseFindKthItem(index)->getItem()->getName();
 	products.remove(products.reverseFindKthItem(index)->getItem());
 	return true;
 }

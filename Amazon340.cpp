@@ -48,7 +48,8 @@ istream& operator>>(istream& in, Amazon340& amazon) {
 	cout << "Enter your password: ";
 	in >> password;
 	cout << "Enter your bio: ";
-	in >> bio;
+	in.ignore();
+	getline(in, bio);
 	cout << "Enter a link to your profile picture: ";
 	in >> profilePicture;
 	amazon.createVendor(username, email, password, bio, profilePicture);

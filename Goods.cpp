@@ -20,7 +20,7 @@ Goods::~Goods() {
 }
 
 bool Goods::sell(int quantity) {
-	if (this->quantity > quantity) {
+	if (this->quantity >= quantity) {
 		this->quantity -= quantity;
 		setSoldCount(getSoldCount() + quantity);
 		return true;
@@ -54,7 +54,8 @@ istream& operator>>(istream& in, Goods& goods) {
 	cin >> name;
 	goods.setName(name);
 	cout << "Enter product description: ";
-	cin >> description;
+	in.ignore();
+	getline(in, description);
 	goods.setDescription(description);
 	cout << "Enter product expiration date:";
 	cin >> goods.expirationDate;
