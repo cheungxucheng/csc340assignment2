@@ -8,18 +8,22 @@
 using namespace std;
 // TO DO: function implementations
 
-Product::Product() {
+Product::Product() { // default constructor
 	name = "";
 	description = "";
 	rating = 0;
 	soldCount = 0;
 }
 
-Product::Product(const string& name, const string& description, const int& rating, const int& soldCount) {
+Product::Product(const string& name, const string& description, const int& rating, const int& soldCount) { // constructor with parameters
 	this->name = name;
 	this->description = description;
 	this->rating = rating;
 	this->soldCount = soldCount;
+}
+
+Product::Product(const Product& original) : name(original.name),
+	description(original.description), rating(original.rating), soldCount(original.soldCount) {// copy constructor
 }
 
 Product::~Product() {
@@ -46,6 +50,17 @@ bool Product::modify() {
 
 bool Product::sell(int quantity) {
 	return false;
+}
+
+Product& Product::operator=(const Product& rhs) { //overloaded assignment operator
+	if (this != &rhs) {
+		name = rhs.name;
+		description = rhs.description;
+		rating = rhs.rating;
+		soldCount =  rhs.soldCount;
+	}
+
+	return *this;
 }
 
 // ------------------------------------------------------------------------------

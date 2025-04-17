@@ -22,7 +22,8 @@ class Vendor {
 	public:
 		Vendor();
 		Vendor(const string& username, const string& email, const string& password, const string& bio, const string& profilePicture);
-		virtual ~Vendor();
+		Vendor(const Vendor& original);
+		~Vendor();
 		void displayProfile();
 		bool modifyPassword(string password);
 		bool createProduct(shared_ptr<Product> product);
@@ -50,7 +51,8 @@ class Vendor {
 		// You may directly include it in your class definition. 
 		// You don't need to modify it but will have to put it inside your class. 
 		// Operator == overloading function prototype:
-		bool operator==(const Vendor& otherVendor) const; 
+		bool operator==(const Vendor& otherVendor) const;
+		Vendor& operator=(const Vendor& rhs); 
 		friend ostream& operator<<(ostream& out, const Vendor& vendor);
 		friend istream& operator>>(istream& in, Vendor& vendor);
 };

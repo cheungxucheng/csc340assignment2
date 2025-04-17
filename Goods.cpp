@@ -12,6 +12,9 @@ Goods::Goods(const string& name, const string& description, const int& rating, c
 	this->quantity = quantity;
 }
 
+Goods::Goods(const Goods& original) : Product(original), expirationDate(original.expirationDate), quantity(original.quantity) {
+}
+
 Goods::~Goods() {
 	//cout << "Deleting Goods obj " << getName() << "....\n";
 }
@@ -26,6 +29,16 @@ bool Goods::sell(int quantity) {
 		cout << "This product is out of stock.\n";
 		return false;
 	}
+}
+
+Goods& Goods::operator=(const Goods& rhs) {
+	Product::operator=(rhs);
+	if (this != &rhs) {
+		expirationDate = rhs.expirationDate;
+		quantity = rhs.quantity;
+	}
+
+	return *this;
 }
 
 ostream& operator<<(ostream& out, const Goods& goods) {

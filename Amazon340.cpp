@@ -3,11 +3,13 @@
 #include <string>
 #include "Amazon340.h"
 
-Amazon340::Amazon340() {
-	vendor = Vendor();
+Amazon340::Amazon340() : vendor(){ // constructor
 }
 
-Amazon340::~Amazon340() {
+Amazon340::Amazon340(const Amazon340& original) : vendor(original.vendor) { //copy constructor
+}
+
+Amazon340::~Amazon340() { // 
 	//cout << "Deleting Amazon340 obj...\n";
 }
 
@@ -19,6 +21,13 @@ void Amazon340::createVendor(const std::string& username, const std::string& ema
 Vendor Amazon340::getVendor() const {
 	// TO DO: implement function
 	return vendor;
+}
+
+Amazon340& Amazon340::operator=(const Amazon340& rhs) { // overloading the assignment operator
+	if (this != &rhs) {
+		vendor = rhs.vendor;
+	}
+	return *this;
 }
 
 ostream& operator<<(ostream& outs, const Amazon340& amazon) {

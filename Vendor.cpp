@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Vendor::Vendor() {
+Vendor::Vendor() { // default constructor
 	username = "";
 	email = "";
 	password = "";
@@ -12,15 +12,18 @@ Vendor::Vendor() {
 	profilePicture = "";
 }
 
-Vendor::Vendor(const string& username, const string& email, const string& password, const string& bio, const string& profilePicture) {
-	this->username = username;
+Vendor::Vendor(const string& username, const string& email, const string& password, const string& bio, const string& profilePicture) { // parameter constructor
+	this->username = username; 
 	this->email = email;
 	this->password = password;
 	this->bio = bio;
 	this->profilePicture = profilePicture;
 }
 
-Vendor::~Vendor() {
+Vendor::Vendor(const Vendor& original) : username(original.username), email(original.email), 
+	password(original.password), bio(original.bio), profilePicture(original.profilePicture), products(original.products) {//copy constructor
+}
+Vendor::~Vendor() { //destructor
 	//cout << "Deleting Vendor obj " << username << "\n";
 }
 
@@ -29,7 +32,7 @@ void Vendor::displayProfile() { // should this be kept with the output operator 
 }
 
 bool Vendor::modifyPassword(string password) {
-	this->password = password;
+	password = password;
 	cout << password << "\n";
 	return true;
 }
@@ -88,6 +91,19 @@ bool Vendor::deleteProduct(int index) {
 // Operator == overloading implementation
 bool Vendor::operator==(const Vendor& otherVendor) const {
 	return (Vendor::username == otherVendor.username) && (Vendor::email == otherVendor.email);
+}
+
+Vendor& Vendor::operator=(const Vendor& rhs) {
+	if (this != &rhs) {
+		username = rhs.username; 
+		email = rhs.email;
+		password = rhs.password;
+		bio = rhs.bio;
+		profilePicture = rhs.profilePicture;
+		products = rhs.products;
+	}
+
+	return *this;
 }
 
 ostream& operator<<(ostream& out, const Vendor& vendor) {

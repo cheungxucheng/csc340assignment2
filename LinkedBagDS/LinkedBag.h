@@ -40,7 +40,7 @@ public:
 	bool contains(const ItemType& anEntry) const;
 	int getFrequencyOf(const ItemType& anEntry) const;
 	std::vector<ItemType> toVector() const;
-
+	LinkedBag<ItemType>& operator=(const LinkedBag<ItemType>& aBag); // overloaded assignment operator
 
 
 }; // end LinkedBag

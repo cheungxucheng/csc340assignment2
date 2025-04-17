@@ -132,40 +132,114 @@ void displayVendorMenu(Vendor& vendor){
 int main(){
 	// Instantiating the program using the default constructor
 	// With this implementation, the application will only have one vendor
+	// testing menu
 	Amazon340 amazon340; 
 	cout << amazon340;
 	cin >> amazon340;
 	Vendor currVendor = amazon340.getVendor();
 	displayVendorMenu(currVendor);
 	
-	// cout << "\n Welcome to Amazon340:" << endl;
-	// // TO DO: Ask the vendor to enter their information 
-	// //        Instantiate a new Vendor object
-	// string username;
-	// string email;
-	// string password;
-	// string bio;
-	// string profilePicture;
-	// cout << "To create a new profile, enter your username: ";
-	// cin >> username;
-	// cout << "Enter your email: ";
-	// cin >> email;
-	// cout << "Enter your password: ";
-	// cin >> password;
-	// cout << "Enter your bio: ";
-	// cin >> bio;
-	// cout << "Enter a link to your profile picture: ";
-	// cin >> profilePicture;
+	Vendor copyTest(currVendor);
+	copyTest.displayAllProducts();
+	Vendor assignTest;
+	assignTest = currVendor;
+	assignTest.displayAllProducts();
+	
+	displayVendorMenu(currVendor);
+	copyTest.displayAllProducts();
+	assignTest.displayAllProducts();
+	// // Testing the Amazon340 copy constructor
+	// cout << "\nTesting the Amazon340 copy constructor\n";
+	// Amazon340 orig;
+	// orig.createVendor("t", "t", "t", "t", "t");
+	// Amazon340 copy(orig);
+	// copy.getVendor().displayProfile(); // should display four t's
 
-	// // call amazon340 createVendor function 
-	// // replace /*...*/ with the right parameters
-	// amazon340.createVendor(username, email, password, bio, profilePicture);
+	// // Testing the Amazon340 operator= 
+	// cout << "\nTesting the Amazon340 operator= \n";
+	// Amazon340 orig1;
+	// orig.createVendor("t", "t", "t", "t", "t");
+	// Amazon340 copy1;
+	// copy = orig;
+	// copy.getVendor().displayProfile(); // should display four t's
 
-	// // Retrieve the vendor 
-	// Vendor currentVendor = amazon340.getVendor();
+	// //Testing the Vendor copy constructor
+	// cout << "\nTesting the Vendor copy constructor\n";
+	// Vendor origVen("a", "b", "c", "d", "e");
+	// Vendor copyVen(origVen);
+	// copyVen.displayProfile(); // should display abce
 
-	// // Display the main menu
-	// displayVendorMenu(currentVendor);
+	// //Testing the Vendor operator=
+	// cout << "\nTesting the Vendor operator=\n";
+	// Vendor origVen2("a", "b", "c", "d", "e");
+	// Vendor copyVen2;
+	// copyVen2 = origVen2;
+	// copyVen2.displayProfile(); // should display abce
 
+	// //Testing Product copy
+	// cout << "\nTesting the Product copy constructor\n";
+	// Product originalProd("Book", "A great book", 5, 100);
+	// Product copiedProd(originalProd);
+	// cout << copiedProd; // should print same info as originalProd
+
+	// //Testing product =
+	// cout << "\nTesting the Product operator=\n";
+	// Product assignedProd;
+	// assignedProd = originalProd;
+	// cout << assignedProd; // should print same info as originalProd
+
+	// //Testing Goods
+	// cout << "\nTesting the Goods copy constructor\n";
+	// Goods originalGoods("Milk", "Organic milk", 4, 20, "2025-05-01", 10);
+	// Goods copiedGoods(originalGoods);
+	// cout << copiedGoods; // should match originalGoods info
+
+	// cout << "\nTesting the Goods operator=\n";
+	// Goods assignedGoods;
+	// assignedGoods = originalGoods;
+	// cout << assignedGoods; // should match originalGoods info
+
+	// //Testing media
+	// cout << "\nTesting the Media copy constructor\n";
+	// Media originalMedia("Movie", "Sci-fi movie", 5, 100, "1080p", "SomeVal");
+	// Media copiedMedia(originalMedia);
+	// cout << copiedMedia; // should match originalMedia info
+
+	// cout << "\nTesting the Media operator=\n";
+	// Media assignedMedia;
+	// assignedMedia = originalMedia;
+	// cout << assignedMedia; // should match originalMedia info
+
+	// //testing LinkedBag
+	// cout << "\nTesting the LinkedBag copy constructor\n";
+	// LinkedBag<string> bag1;
+	// bag1.add("apple");
+	// bag1.add("banana");
+	// bag1.add("cherry");
+
+	// LinkedBag<string> bag2(bag1);
+	// vector<string> items2 = bag2.toVector();
+	// for (const auto& item : items2) {
+	// 	cout << item << " ";
+	// }
+	// cout << endl; // should print cherry banana apple 
+
+	// cout << "\nTesting the LinkedBag operator=\n";
+	// LinkedBag<string> bag3;
+	// bag3 = bag1;
+	// vector<string> items3 = bag3.toVector();
+	// for (const auto& item : items3) {
+	// 	cout << item << " ";
+	// }
+	// cout << endl; // should match items in bag1
+
+	// //testing that it is deep copy
+	// bag1.add("date");
+	// cout << "After modifying bag1:\n";
+	// cout << "bag1: ";
+	// for (const auto& item : bag1.toVector()) cout << item << " ";
+	// cout << "\nbag2: ";
+	// for (const auto& item : bag2.toVector()) cout << item << " ";
+	
 	return 0;
 }
