@@ -196,8 +196,6 @@ bool LinkedBag<ItemType>::contains(const ItemType& anEntry) const{
 	return (getPointerTo(anEntry) != nullptr);
 }  // end contains
 
-
-
 // private
 // Returns either a pointer to the node containing a given entry 
 // or the null pointer if the entry is not in the bag.
@@ -216,4 +214,30 @@ Node<ItemType>* LinkedBag<ItemType>::getPointerTo(const ItemType& anEntry) const
 	return curPtr;
 } // end getPointerTo
 
+template<class ItemType>
+LinkedBag<ItemType>& LinkedBag<ItemType>::operator=(const LinkedBag<ItemType>& aBag) {
+	if (this != &aBag) {
+		if(aBag.headPtr != nullptr) {
+			this->clear(); // clears this linked bag, this head points to nullptr
+			this->itemCount = aBag.itemCount;
+			Node<ItemType>* temp = aBag.headPtr;
+			this->headPtr = new Node<ItemType>(temp->getItem());
+			Node<ItemType>* thisChainPtr = this->headPtr;
+			temp = temp->getNext();
+			
+			while (temp != nullptr) {
+				Node<ItemType>* newNodePtr = new Node<ItemType>();
+				newNodePtr->setItem(temp->getItem());
+				
+				thisChainPtr->setNext(newNodePtr);
+				
+				thisChainPtr = thisChainPtr->getNext();
 
+				temp = temp->getNext();
+				
+			}
+			thisChainPtr->setNext(nullptr);
+		}
+	}
+	return *this;
+}
