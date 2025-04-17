@@ -27,7 +27,7 @@ Product::~Product() {
 }
 
 void Product::display() {
-	cout << this;
+	cout << *this;
 }
 
 bool Product::modify() {
@@ -66,7 +66,7 @@ istream& operator>>(istream& in, Product& product) {
 	in >> product.description;
 	cout << "Enter product rating: ";
 	in >> product.rating;
-	cout << "Enter solc count: ";
+	cout << "Enter sold count: ";
 	in >> product.soldCount;
 
 	return in;
