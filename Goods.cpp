@@ -51,15 +51,15 @@ istream& operator>>(istream& in, Goods& goods) {
 	string description;
 
 	cout << "Enter product name: ";
-	cin >> name;
+	in >> name;
 	goods.setName(name);
 	cout << "Enter product description: ";
 	in.ignore();
 	getline(in, description);
 	goods.setDescription(description);
 	cout << "Enter product expiration date:";
-	cin >> goods.expirationDate;
+	in >> goods.expirationDate;
 	cout << "Enter product quantity: ";
-	cin >> goods.quantity;
+	in >> goods.quantity;
 	return in;
 }
